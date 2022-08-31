@@ -8,6 +8,10 @@ function App() {
       name: "Nguyen Quang Huy",
       status: "18/9/2001",
     },
+    {
+      name: "Dinh Quang Minh",
+      status: "30/2/2001",
+    },
   ];
   const [valueInput, setValueInput] = useState({
     inputTask: "",
@@ -65,6 +69,7 @@ function App() {
     let item = [...items];
     let index = valueInput.indexEdit;
     item[index].name = valueInput.inputEdit;
+    valueInput.inputEdit = '';
     setItems(item);
   };
   
@@ -87,7 +92,7 @@ function App() {
     {items?.map((item, index) => {
       return (      
     <ul class="todoList">
-      <li>
+      <li onClick={() => handleEdit(index)}>
         {item.status}: {item.name}
           <p>
             <span><i class="fas fa-edit" onClick={() => handleEdit(index)}></i></span>
